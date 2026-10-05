@@ -1,0 +1,214 @@
+/* =============================================================
+   SMAB site styles
+   - Colors are the brand hexes. Change them here, in one place.
+   - The tiling images live in tiles/*.svg (one per colorway).
+   ============================================================= */
+
+:root {
+  --purple: #500082;
+  --dark-purple: #280050;
+  --gold: #FFBE0A;
+  --ink: #1B1025;
+  --muted: #4A3A5C;
+  --lavender: #EFE8FA;
+  --rule: rgba(80, 0, 130, 0.25);
+
+  --body-font: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --accent-font: "Roboto Slab", Rockwell, Georgia, serif;   /* headings + accents */
+  --body-size: 21px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--lavender);
+  color: var(--ink);
+  font-family: var(--body-font);
+  font-size: var(--body-size);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ---------- layout: text on the left half, tiling on the right half ---------- */
+main section {
+  min-height: 100vh;
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  width: 100%;
+  padding: 96px 64px;
+  overflow-wrap: break-word;
+}
+
+.tiles {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100vh;
+  background: var(--dark-purple);
+  z-index: 0;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  background: center / cover no-repeat;
+  opacity: 0;
+  transition: opacity 0.1s linear;
+}
+.layer[data-colorway="home"]      { background-image: url("tiles/home.svg"); opacity: 1; }
+.layer[data-colorway="why"]       { background-image: url("tiles/why.svg"); }
+.layer[data-colorway="events"]    { background-image: url("tiles/events.svg"); }
+.layer[data-colorway="resources"] { background-image: url("tiles/resources.svg"); }
+.layer[data-colorway="boards"]    { background-image: url("tiles/boards.svg"); }
+
+/* ---------- type ---------- */
+h1, h2, h3 {
+  font-family: var(--accent-font);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin: 0 0 0.6em;
+}
+h1 { font-size: clamp(44px, 5vw, 76px); }
+h2 { font-size: 34px; margin-top: 1.6em; }
+h3 { font-size: 26px; margin-top: 1.4em; }
+
+p { margin: 0 0 1em; }
+ol, ul { margin: 0 0 1em; padding-left: 1.6em; }
+li { margin-bottom: 0.4em; }
+
+a { color: var(--purple); }
+
+.kicker,
+.to-top,
+.rows b {
+  font-family: var(--accent-font);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--purple);
+}
+.kicker { margin-bottom: 1.4em; }
+
+.to-top {
+  display: inline-block;
+  margin-top: 2em;
+  text-decoration: none;
+}
+.to-top:hover { color: var(--ink); }
+
+/* ---------- home menu: plain hoverable links ---------- */
+.menu { margin-top: 1.4em; }
+.menu a {
+  display: table;
+  margin-bottom: 0.5em;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.menu a:hover {
+  color: var(--purple);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+
+/* ---------- rows: events + boards ---------- */
+.rows {
+  list-style: none;
+  padding: 0;
+  border-top: 2px solid var(--ink);
+}
+.rows li {
+  margin: 0;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.rows b {
+  display: inline-block;
+  min-width: 120px;
+  margin-right: 16px;
+}
+
+/* board roles: role on the left, names on the right (stacks on phones) */
+.roles li {
+  display: grid;
+  grid-template-columns: minmax(150px, 38%) 1fr;
+  gap: 4px 20px;
+  align-items: baseline;
+}
+.roles b { min-width: 0; margin-right: 0; }
+
+.note { margin-top: 1.2em; font-size: 18px; color: var(--muted); }
+
+/* ---------- resource cards ---------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 22px;
+  background: #fff;
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.card span { font-weight: 400; font-size: 17px; color: var(--muted); }
+.card:hover { background: #FBF8FF; }
+
+/* ---------- footer ---------- */
+footer {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding: 32px 64px 48px;
+  border-top: 1px solid var(--rule);
+  font-size: 16px;
+  color: var(--muted);
+}
+
+/* ---------- phones: tiling becomes a band above each section ---------- */
+@media (max-width: 800px) {
+  :root { --body-size: 18px; }
+  .tiles { display: none; }
+  main section,
+  footer { width: 100%; }
+  main section { display: block; min-height: 0; }
+  main section::before {
+    content: "";
+    display: block;
+    height: 26vh;
+    background: var(--dark-purple) center / cover no-repeat;
+  }
+  #home::before            { background-image: url("tiles/home.svg"); }
+  #why-smab::before        { background-image: url("tiles/why.svg"); }
+  #upcoming-events::before { background-image: url("tiles/events.svg"); }
+  #resources::before       { background-image: url("tiles/resources.svg"); }
+  #boards::before          { background-image: url("tiles/boards.svg"); }
+  .text { padding: 40px 22px 56px; }
+  footer { padding: 28px 22px 40px; }
+  .menu a { font-size: 22px; }
+  .roles li { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
