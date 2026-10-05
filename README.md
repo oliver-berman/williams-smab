@@ -1,6 +1,9 @@
 # SMAB website
 
-The official website for Williams SMAB is hosted via GitHub pages. In case it's unclear, here's what all the files do:
+The official website for Williams SMAB is hosted via GitHub pages. The link to the actual website, for right now at least is, [oliver-berman.github.io/williams-smab)](oliver-berman.github.io/williams-smab)
+
+
+## In case it's unclear, here's what all the files do:
 
 | File | What it does |
 |---|---|
@@ -19,5 +22,5 @@ The official website for Williams SMAB is hosted via GitHub pages. In case it's 
 
 There are of course other ways to edit this, but these are the parts most likely to change
 
-## Contacct
+## Contact
 Though he never thought he'd be called this, you can contact the current webmaster Oliver Berman via email at oab at williams dot edu
