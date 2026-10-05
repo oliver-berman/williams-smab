@@ -19,4 +19,5 @@ The official website for Williams SMAB is hosted via GitHub pages. In case it's 
 
 There are of course other ways to edit this, but these are the parts most likely to change
 
-Contact Oliver Berman via email at oab at williams dot edu
+## Contacct
+Though he never thought he'd be called this, you can contact the current webmaster Oliver Berman via email at oab at williams dot edu
