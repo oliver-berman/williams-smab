@@ -29,7 +29,7 @@ body {
 
 main section {
   min-height: 100vh;
-  width: 75%;
+  width: 60%;
   display: flex;
   align-items: center;
 }
@@ -70,7 +70,7 @@ h1, h2, h3 {
   letter-spacing: -0.015em;
   margin: 0 0 0.6em;
 }
-h1 { font-size: clamp(44px, 5vw, 76px); }
+h1 { font-size: clamp(40px, 5vw, 72px); }
 h2 { font-size: 34px; margin-top: 1.6em; }
 h3 { font-size: 26px; margin-top: 1.4em; }
 
@@ -162,7 +162,7 @@ a { color: var(--purple); }
 .card:hover { background: #FBF8FF; }
 
 footer {
-  width: 50%;
+  width: 60%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -173,42 +173,15 @@ footer {
   color: var(--muted);
 }
 
-/* mobile formatting  */
-@media (max-width: 800px) {
-  :root { --body-size: 18px; }
-  .tiles { display: none; }
-  main section,
-  footer { width: 100%; }
-  main section { display: block; min-height: 0; }
-  main section::before {
-    content: "";
-    display: block;
-    height: 26vh;
-    background: var(--dark-purple) center / cover no-repeat;
-  }
-  #home::before            { background-image: url("tiles/home.svg"); }
-  #why-smab::before        { background-image: url("tiles/why.svg"); }
-  #upcoming-events::before { background-image: url("tiles/events.svg"); }
-  #resources::before       { background-image: url("tiles/resources.svg"); }
-  #boards::before          { background-image: url("tiles/boards.svg"); }
-  .text { padding: 40px 22px 56px; }
-  footer { padding: 28px 22px 40px; }
-  .menu a { font-size: 22px; }
-  .roles li { grid-template-columns: 1fr; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-}
-
-/* scroll progress rail */
+/* scroll progress rail — right side, labels flowing in from the left */
 .progress {
   position: fixed;
   top: 50%;
-  left: 22px;
+  right: calc(25% + 32px);
   transform: translateY(-50%);
   z-index: 5;
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
   gap: 14px;
 }
@@ -240,13 +213,15 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 180px;           /* match the track */
+  align-items: flex-end;
+  height: 180px;
 }
 
 .progress-steps li { margin: 0; }
 
 .progress-steps a {
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
   gap: 8px;
   text-decoration: none;
@@ -255,9 +230,11 @@ footer {
   font-size: 12px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .progress-steps .dot {
+  flex: none;
   width: 9px;
   height: 9px;
   border-radius: 50%;
@@ -267,7 +244,8 @@ footer {
 
 .progress-steps .label {
   opacity: 0;
-  transform: translateX(-4px);
+  transform: translateX(6px);
+  text-align: right;
   transition: opacity 0.2s, transform 0.2s;
 }
 
@@ -280,19 +258,39 @@ footer {
 
 .progress-steps a:hover .dot { background: var(--muted); }
 
-.progress-steps a.is-active {
-  color: var(--purple);
-}
+.progress-steps a.is-active { color: var(--purple); }
 .progress-steps a.is-active .dot {
   background: var(--gold);
   transform: scale(1.35);
 }
 
+/* mobile formatting  */
 @media (max-width: 800px) {
+  :root { --body-size: 18px; }
+  .tiles { display: none; }
   .progress { display: none; }
+  main section,
+  footer { width: 100%; }
+  main section { display: block; min-height: 0; }
+  main section::before {
+    content: "";
+    display: block;
+    height: 26vh;
+    background: var(--dark-purple) center / cover no-repeat;
+  }
+  #home::before            { background-image: url("tiles/home.svg"); }
+  #why-smab::before        { background-image: url("tiles/why.svg"); }
+  #upcoming-events::before { background-image: url("tiles/events.svg"); }
+  #resources::before       { background-image: url("tiles/resources.svg"); }
+  #boards::before          { background-image: url("tiles/boards.svg"); }
+  .text { padding: 40px 22px 56px; }
+  footer { padding: 28px 22px 40px; }
+  .menu a { font-size: 22px; }
+  .roles li { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   .progress-fill,
   .progress-steps .dot,
   .progress-steps .label { transition: none; }
