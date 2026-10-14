@@ -44,7 +44,7 @@ main section {
   position: fixed;
   top: 0;
   right: 0;
-  width: 50%;
+  width: 25%;
   height: 100vh;
   background: var(--dark-purple);
   z-index: 0;
