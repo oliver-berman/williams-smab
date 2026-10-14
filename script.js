@@ -42,3 +42,46 @@
   window.addEventListener("resize", request);
   update();
 })();
+
+/* Scroll progress rail: fills the track as you move through the page
+   and lights up the dot for whichever section the tiles are showing. */
+(function () {
+  var fill = document.getElementById("progress-fill");
+  var steps = Array.prototype.slice.call(document.querySelectorAll(".progress-steps a"));
+  var sections = Array.prototype.slice.call(document.querySelectorAll("main section[data-colorway]"));
+  if (!fill || !steps.length || !sections.length) return;
+
+  function update() {
+    /* how far down the document we are, 0 to 1 */
+    var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = max > 0 ? Math.min(1, Math.max(0, scrolled / max)) : 0;
+    fill.style.height = (pct * 100) + "%";
+
+    /* same rule the tiles use: the current section is the first one
+       whose bottom edge is still below the middle of the screen */
+    var mid = window.innerHeight / 2;
+    var cur = sections.length - 1;
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].getBoundingClientRect().bottom > mid) { cur = i; break; }
+    }
+    var curName = sections[cur].dataset.colorway;
+
+    steps.forEach(function (a) {
+      var on = a.dataset.step === curName;
+      a.classList.toggle("is-active", on);
+      if (on) { a.setAttribute("aria-current", "true"); }
+      else    { a.removeAttribute("aria-current"); }
+    });
+  }
+
+  var ticking = false;
+  function request() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () { ticking = false; update(); });
+  }
+  window.addEventListener("scroll", request, { passive: true });
+  window.addEventListener("resize", request);
+  update();
+})();
