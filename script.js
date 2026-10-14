@@ -66,6 +66,7 @@
       if (sections[i].getBoundingClientRect().bottom > mid) { cur = i; break; }
     }
     var curName = sections[cur].dataset.colorway;
+    document.querySelector(".progress").classList.toggle("is-hidden", curName === "home");
 
     steps.forEach(function (a) {
       var on = a.dataset.step === curName;
