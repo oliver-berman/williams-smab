@@ -200,3 +200,100 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* scroll progress rail */
+.progress {
+  position: fixed;
+  top: 50%;
+  left: 22px;
+  transform: translateY(-50%);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.progress-track {
+  position: relative;
+  width: 3px;
+  height: 180px;
+  background: var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;              /* JS sets this */
+  background: var(--purple);
+  border-radius: 2px;
+  transition: height 0.1s linear;
+}
+
+.progress-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 180px;           /* match the track */
+}
+
+.progress-steps li { margin: 0; }
+
+.progress-steps a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--muted);
+  font-family: var(--accent-font);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.progress-steps .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--rule);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.progress-steps .label {
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.progress:hover .label,
+.progress-steps a:focus-visible .label,
+.progress-steps a.is-active .label {
+  opacity: 1;
+  transform: none;
+}
+
+.progress-steps a:hover .dot { background: var(--muted); }
+
+.progress-steps a.is-active {
+  color: var(--purple);
+}
+.progress-steps a.is-active .dot {
+  background: var(--gold);
+  transform: scale(1.35);
+}
+
+@media (max-width: 800px) {
+  .progress { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-fill,
+  .progress-steps .dot,
+  .progress-steps .label { transition: none; }
+}
