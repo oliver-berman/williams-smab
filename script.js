@@ -1,7 +1,4 @@
-/* Crossfades the tiling panel between colorways as you scroll.
-   Each <section data-colorway="..."> picks its layer in .tiles.
-   When a section's bottom edge rises past the middle of the screen,
-   the next section's colorway fades in. */
+/* Crossfades the tiling panel between colorways as you scroll. Each <section data-colorway="..."> picks its layer in .tiles. When a section's bottom edge rises past the middle of the screen, the next section's colorway fades in. */
 (function () {
   var sections = Array.prototype.slice.call(document.querySelectorAll("main section[data-colorway]"));
   var layers = {};
@@ -12,7 +9,7 @@
   function update() {
     var h = window.innerHeight;
     var mid = h / 2;
-    var fadeZone = h * 0.6;   /* bigger = slower fade */
+    var fadeZone = h * 0.5;   /* bigger => slower fade */
 
     var cur = 0;
     for (var i = 0; i < sections.length; i++) {
