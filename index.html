@@ -11,6 +11,23 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body id="top">
+  <nav class="progress" aria-label="Scroll progress">
+  <div class="progress-track">
+    <div class="progress-fill" id="progress-fill"></div>
+  </div>
+  <ol class="progress-steps">
+    <li><a href="#home" data-step="home">
+      <span class="dot" aria-hidden="true"></span><span class="label">Home</span></a></li>
+    <li><a href="#upcoming-events" data-step="events">
+      <span class="dot" aria-hidden="true"></span><span class="label">Events</span></a></li>
+    <li><a href="#resources" data-step="resources">
+      <span class="dot" aria-hidden="true"></span><span class="label">Resources</span></a></li>
+    <li><a href="#why-smab" data-step="why">
+      <span class="dot" aria-hidden="true"></span><span class="label">About</span></a></li>
+    <li><a href="#boards" data-step="boards">
+      <span class="dot" aria-hidden="true"></span><span class="label">The Board</span></a></li>
+  </ol>
+</nav>
 <div class="tiles" aria-hidden="true">
 <div class="layer" data-colorway="home"></div>
   <div class="layer" data-colorway="why"></div>
@@ -26,33 +43,11 @@
     <div class="text">
       <h1>Welcome to SMAB, the Student Math Advisory Board.</h1>
       <nav class="menu" aria-label="Sections">
-        <a href="#why-smab">About SMAB</a>
         <a href="#upcoming-events">Events</a>
         <a href="#resources">Resources</a>
+        <a href="#why-smab">About SMAB</a>
         <a href="#boards">The Board</a>
       </nav>
-    </div>
-  </section>
-
-  <!--  ABOUT  -->
-  <section id="why-smab" data-colorway="why">
-    <div class="text">
-      <h1>Why do we have a SMAB?</h1>
-
-     <p>SMAB exists to strengthen the mathematics community at Williams.</p>
-      <p>We want to make the department feel more connected, welcoming, and student-driven by creating opportunities for students to meet one another and faculty outside the classroom, helping students navigate the mathematics program and its opportunities, and making sure student perspectives are reflected in the department.</p>
-      <p>SMAB also serves as a bridge between different parts of the math community: students across class years, students and faculty, majors and non-majors, and other math-related student groups (AWM, Spectra, Math Club).</p>
-
-      <h2>Our goals this year are to:</h2>
-      <ol>
-        <li><b>Build a stronger math community</b>: create more opportunities for students to interact socially and intellectually outside of class; create more informal opportunities for students to get to know professors, learn about their work and experiences, and feel comfortable approaching them outside the classroom.</li>
-        <li><b>Represent student perspectives</b>: actively gather feedback from students about their experiences in the department and communicate useful themes, concerns, and ideas to faculty. Assist with giving feedback for new faculty hiring.</li>
-        <li><b>Help students discover opportunities in math</b>: hold REU/grad school panels, organize info sessions with alumni, faculty, and grad school admissions to help students discover and participate in these activities.</li>
-        <li><b>Improve communication between SMAB and students</b>: make events, opportunities, resources, and news easier for students to discover, and create reliable ways for students to communicate with SMAB.</li>
-        <li><b>Build traditions and continuity</b>: continue recurring events such as Math Tea and experiment with new traditions, and leave behind enough documentation so future SMAB boards can build on it.</li>
-      </ol>
-
-      <a class="to-top" href="#top">↑ Back to THE top</a>
     </div>
   </section>
 
@@ -78,7 +73,7 @@
       <h1>Where's the important info?</h1>
       <div class="cards">
         <a class="card" href="https://math.williams.edu" target="_blank" rel="noopener">Williams Math<span>The department’s official website</span></a>
-        <a class="card" href="https://https://hub.williams.edu/math/courses/requirements-for-the-major/" target="_blank" rel="noopener">Major Requirements<span>All you need to know to graduate</span></a>
+        <a class="card" href="https://hub.williams.edu/math/courses/requirements-for-the-major/" target="_blank" rel="noopener">Major Requirements<span>All you need to know to graduate</span></a>
         <a class="card" href="https://hub.williams.edu/math/courses/requirements-for-the-major/applied-mathematics-pathway/" target="_blank" rel="noopener">The Applied Math Track<span>Suggested classes and more</span></a>
         <a class="card" href="https://hub.williams.edu/math/small/">SMALL REU Program<span>Summer math research</span></a>
         <a class="card" href="https://hub.williams.edu/peer-academic-support/content-tutoring/" target="_blank" rel="noopener">Content Tutoring<span>Help beyond Office/TA hours</span></a>
@@ -87,6 +82,29 @@
       <a class="to-top" href="#top">↑ Back to THE top</a>
     </div>
   </section>
+  
+  <!--  ABOUT  -->
+  <section id="why-smab" data-colorway="why">
+    <div class="text">
+      <h1>Why do we have a SMAB?</h1>
+
+     <p>SMAB exists to strengthen the mathematics community at Williams.</p>
+      <p>We want to make the department feel more connected, welcoming, and student-driven by creating opportunities for students to meet one another and faculty outside the classroom, helping students navigate the mathematics program and its opportunities, and making sure student perspectives are reflected in the department.</p>
+      <p>SMAB also serves as a bridge between different parts of the math community: students across class years, students and faculty, majors and non-majors, and other math-related student groups (AWM, Spectra, Math Club).</p>
+
+      <h2>Our goals this year are to:</h2>
+      <ol>
+        <li><b>Build a stronger math community</b>: create more opportunities for students to interact socially and intellectually outside of class; create more informal opportunities for students to get to know professors, learn about their work and experiences, and feel comfortable approaching them outside the classroom.</li>
+        <li><b>Represent student perspectives</b>: actively gather feedback from students about their experiences in the department and communicate useful themes, concerns, and ideas to faculty. Assist with giving feedback for new faculty hiring.</li>
+        <li><b>Help students discover opportunities in math</b>: hold REU/grad school panels, organize info sessions with alumni, faculty, and grad school admissions to help students discover and participate in these activities.</li>
+        <li><b>Improve communication between SMAB and students</b>: make events, opportunities, resources, and news easier for students to discover, and create reliable ways for students to communicate with SMAB.</li>
+        <li><b>Build traditions and continuity</b>: continue recurring events such as Math Tea and experiment with new traditions, and leave behind enough documentation so future SMAB boards can build on it.</li>
+      </ol>
+
+      <a class="to-top" href="#top">↑ Back to THE top</a>
+    </div>
+  </section>
+
 
   <!--  BOARD  -->
   <section id="boards" data-colorway="boards">
@@ -117,4 +135,5 @@
 
 <script src="script.js"></script>
 </body>
+  
 </html>
